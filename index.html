@@ -1,252 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no, minimal-ui" />
-  <title>BuildNow GG</title>
+<meta charset="UTF-8">
+<title>BuildNow GG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script>
-    window.czyVariables = {
-      countryCode: "US",
-      device: {
-        os: { name: "Mac OS", version: "10.15.7" },
-        browser: { name: "Chrome", version: "145.0.0.0", major: "145" },
-        device: { type: "desktop" },
-        engine: { name: "Blink", version: "145.0.0.0" }
-      },
-      geo: {
-        countryCode: "US",
-        city: "Wilton",
-        unlocode: "US/WT8",
-        longitude: "-73.43790",
-        latitude: "41.19537",
-        region: "Connecticut",
-        regionCode: "CT",
-        metroCode: "501",
-        postalCode: "06897"
-      }
-    };
-  </script>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: black;
+  overflow: hidden;
+}
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-
-    /* Hide everything except the actual game container */
-    body > :not(#game-container-wrapper):not(script) {
-      display: none !important;
-    }
-
-    #game-container-wrapper {
-      position: fixed !important;
-      inset: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      overflow: hidden !important;
-      background: #000 !important;
-    }
-
-    #game-container {
-      width: 100% !important;
-      height: 100% !important;
-      position: relative !important;
-    }
-
-    #game-iframe {
-      width: 100% !important;
-      height: 100% !important;
-      min-width: 100% !important;
-      min-height: 100% !important;
-      border: 0 !important;
-      display: block !important;
-      background: #000 !important;
-    }
-
-    /* Hide the footer / buttons if they get injected */
-    .css-1h1938b,
-    .MuiGrid-root,
-    [data-testid^="footer-"],
-    #game-controls-toggle-button,
-    footer,
-    header {
-      display: none !important;
-    }
-  </style>
-
-  <script type="text/javascript" src="https://builds.crazygames.com/gameframe/v1.352/bundle.js" async></script>
+iframe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+}
+</style>
 </head>
+
 <body>
-  <script type="text/javascript">
-    function loadScript(url, callback) {
-      var head = document.head;
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = url;
-      script.async = true;
-      script.onreadystatechange = callback;
-      script.onload = callback;
-      head.appendChild(script);
-    }
 
-    var options = {
-      "loader": "unity2022",
-      "loaderOptions": {
-        "showProgress": true,
-        "unityLoaderUrl": "https://files.crazygames.com/buildnow-gg/153/buildnow/Build/7a2dbded24d57e056180125b1583e7c4.loader.js",
-        "unityConfigOptions": {
-          "codeUrl": "https://files.crazygames.com/buildnow-gg/153/buildnow/Build/15baf12019f0d4982e84282a19b4373f.wasm.br",
-          "dataUrl": "https://files.crazygames.com/buildnow-gg/153/buildnow/Build/e660a3e796e86e7214617531e51f6b09.data.br",
-          "frameworkUrl": "https://files.crazygames.com/buildnow-gg/153/buildnow/Build/14dffa92a2f32c4303f94f952d1d1e42.framework.js.br",
-          "streamingAssetsUrl": "https://files.crazygames.com/buildnow-gg/153/buildnow/StreamingAssets"
-        }
-      },
-      "thumbnail": "buildnow-gg_16x9/20251229084241/buildnow-gg_16x9-cover",
-      "gameName": "BuildNow GG",
-      "gameHttps": true,
-      "gameSlug": "buildnow-gg",
-      "gameId": "19611",
-      "buildId": "0f2a8724-18b7-4691-9c4d-a9ebab24c359",
-      "gameStatus": "published",
-      "showAdOnExternal": "ALWAYS",
-      "showAdOnInternal": "DEFAULT",
-      "disableEmbedding": false,
-      "dollarRate": 0.8683095662533223,
-      "upvotes": 249481,
-      "downvotes": 21938,
-      "releaseDate": "2021-08-23",
-      "locale": "en_US",
-      "controls": {
-        "mouse": {
-          "left": { "en_US": "Shoot" },
-          "right": { "en_US": "Aim/reset edit" }
-        },
-        "keyboard": [
-          { "keys": ["Q"], "label": { "en_US": "Wall" } },
-          { "keys": ["C"], "label": { "en_US": "Floor" } },
-          { "keys": ["V"], "label": { "en_US": "Ramp" } },
-          { "keys": ["LEFT SHIFT"], "label": { "en_US": "Roof" } },
-          { "keys": ["WASD", "ARROWS"], "label": { "en_US": "Move" } }
-        ]
-      },
-      "video": {
-        "original": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg.mp4",
-        "sizes": [
-          { "width": 205, "height": 115, "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-205x115_30fps.mp4" },
-          { "width": 249, "height": 140, "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-249x140_30fps.mp4" },
-          { "width": 364, "height": 208, "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-364x208_30fps.mp4" },
-          { "width": 494, "height": 276, "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-494x276_30fps.mp4" },
-          { "width": 611, "height": 343, "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-611x343_30fps.mp4" },
-          { "width": 1024, "height": 576, "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-1024x576_30fps.mp4" },
-          { "width": 1280, "height": 720, "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-1280x720_30fps.mp4" },
-          { "width": 1920, "height": 1080, "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-1920x1080_30fps.mp4" }
-        ],
-        "portraitOriginal": null,
-        "portraitSizes": [],
-        "blurredVideo": {
-          "width": 922,
-          "height": 532,
-          "location": "https://videos.crazygames.com/buildnow-gg/2/buildnow-gg-landscape-922x532_30fps_blurred.mp4"
-        }
-      },
-      "sandbox": true,
-      "totalSizeBytes": 59469645,
-      "initialLoadSizeBytes": 59305375,
-      "minTimeBetweenMidrollAdsInMs": 180000,
-      "minTimeBetweenRewardedAdsInMs": 5000,
-      "noMidrollAdInFirstMinutes": 3,
-      "noRewardedAdInFirstMinutes": 0,
-      "categoryEnSlug": "shooting",
-      "tagsEnSlugs": ["3d", "play-and-upgrade", "third-person-shooter", "build", "controller", "with-friends", "multiplayer"],
-      "isKids": false,
-      "androidFriendly": false,
-      "iosFriendly": false,
-      "hasMidroll": true,
-      "hasRewarded": true,
-      "fullscreen": "ADDS_VALUE",
-      "orientation": null,
-      "multiplayerOptions": {
-        "maxLobbySize": 12,
-        "minLobbySize": 2,
-        "isMultiplayer": true,
-        "hasModeratedChat": true,
-        "supportsInstantJoin": true
-      },
-      "platformAudioMuteSupported": true,
-      "launchFlow": "full",
-      "loadFileSize": 43997134,
-      "userProgressionSaveMessage": "cloud",
-      "apsStorageType": "sdk",
-      "category": "Third Person Shooter",
-      "categoryLink": "https://www.crazygames.com/t/third-person-shooter",
-      "gameLink": "https://www.crazygames.com/game/buildnow-gg",
-      "domainHasNoCMP": false,
-      "source": "games"
-    };
+<iframe
+src="https://buildnow-gg.game-files.crazygames.com/unity/unity2020/buildnow-gg.html"
+allow="fullscreen; autoplay; gamepad; microphone"
+allowfullscreen>
+</iframe>
 
-    var SDK_READY = false;
-    var GF_READY = false;
-    var GF_LOAD_CALLED = false;
-
-    var gfBuildPath = 'https://builds.crazygames.com/gameframe';
-    var gfDefaultVersion = '1';
-    var useLocalGF = false;
-    var customGFHost = '';
-
-    var params = new URLSearchParams(window.location.search);
-    var version = params.get('v');
-
-    if (version) {
-      var versionRegex = /^\d+(\.\d+)?(\.\d+)?$/;
-      if (!versionRegex.test(version)) {
-        console.error('Invalid Gameframe version provided, falling back to default version');
-        version = null;
-      }
-    }
-
-    var gameframeJs = gfBuildPath + '/v' + (version || gfDefaultVersion) + '/bundle.js';
-
-    if (useLocalGF) {
-      gameframeJs = 'http://localhost:3002/bundle.js';
-    }
-
-    if (customGFHost) {
-      gameframeJs = customGFHost + '/bundle.js';
-    }
-
-    loadScript(gameframeJs, function () {
-      Crazygames.load(options).then(function () {
-        var loaderWrapper = document.getElementById('ziggyLoader');
-        var loaderStyles = document.getElementById('ziggyLoaderStyles');
-        if (loaderWrapper && loaderStyles) {
-          loaderWrapper.remove();
-          loaderStyles.remove();
-        }
-
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-      });
-    });
-  </script>
-
-  <div id="game-container-wrapper">
-    <div id="game-container">
-      <iframe
-        id="game-iframe"
-        src="https://buildnow-gg.game-files.crazygames.com/unity/unity2020/buildnow-gg.html?isNewUser=false&v=1.352"
-        allow="accelerometer; gyroscope; gamepad; autoplay; payment; fullscreen; microphone; clipboard-read; clipboard-write"
-        webkitallowfullscreen="true"
-        mozallowfullscreen="true"
-        msallowfullscreen="true"
-        allowfullscreen="true"
-        sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-same-origin allow-downloads allow-popups-to-escape-sandbox"
-      ></iframe>
-    </div>
-  </div>
 </body>
 </html>
